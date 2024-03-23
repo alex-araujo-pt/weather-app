@@ -58,7 +58,7 @@ FROM base
 # Install Node.js runtime dependencies
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y curl libsqlite3-0 libvips libpq5 && \
-    curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
+    # curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
     apt-get install -y nodejs && \
     rm -rf /var/lib/apt/lists/*
 
