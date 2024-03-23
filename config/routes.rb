@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :weathers, only: %i[index show]
+      resources :weathers, only: %i[index]
     end
   end
 end
