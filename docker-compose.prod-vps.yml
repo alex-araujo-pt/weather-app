@@ -1,11 +1,5 @@
 version: '3'
 services:
-  db:
-    image: postgres
-    environment:
-        POSTGRES_PASSWORD: ${WEATHER_APP_DATABASE_PASSWORD}
-    volumes:
-      - ./data/db:/var/lib/postgresql/data
   web:
     container_name: ${CONTAINER_SITE_NAME}
     build: .

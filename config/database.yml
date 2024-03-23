@@ -19,7 +19,7 @@ test:
 
 production:
   <<: *default
-  host: db
+  host: postgres-db 
   database: weather_app_production
   username: your_production_username
   password: <%= ENV['WEATHER_APP_DATABASE_PASSWORD'] %>
