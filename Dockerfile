@@ -58,13 +58,14 @@ FROM base
 # Install Node.js runtime dependencies
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y curl libsqlite3-0 libvips libpq5 && \
-    # curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
-    apt-get install -y nodejs && \
     rm -rf /var/lib/apt/lists/*
 
 # Copy built artifacts: gems, application, and frontend build
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
+
+# Copy the built React app to the Rails public/frontend directory
+COPY --from=node_base /app/frontend/build /rails/public/frontend
 
 # Run and own only the runtime files as a non-root user for security
 RUN useradd rails --create-home --shell /bin/bash && \
