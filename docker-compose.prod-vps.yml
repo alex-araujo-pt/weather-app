@@ -5,7 +5,7 @@ services:
     environment:
         POSTGRES_PASSWORD: ${WEATHER_APP_DATABASE_PASSWORD}
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
+      - ./data/db:/var/lib/postgresql/data
   web:
     container_name: ${CONTAINER_SITE_NAME}
     build: .
