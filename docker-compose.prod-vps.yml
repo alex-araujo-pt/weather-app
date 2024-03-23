@@ -13,5 +13,5 @@ services:
       LETSENCRYPT_HOST: ${DOMAINS}
       LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
   networks:
-    external:
+    default:
       name: ${NETWORK}
