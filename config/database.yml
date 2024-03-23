@@ -1,7 +1,9 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: postgres
+  username: alexandrearaujo
+  host: host.docker.internal
+  # host: host.docker.internal
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
