@@ -1,5 +1,7 @@
 module Api::V1
   class WeathersController < ApplicationController
+    before_action :authenticate
+
     def index
       return render json: { error: 'Location is required' }, status: :bad_request if params[:location].blank?
       
@@ -29,6 +31,13 @@ module Api::V1
         Weather.create(location: location, weather_data: current_weather)
       end
       current_weather
+    end
+
+    def authenticate
+      auth_header = request.headers['Authorization']
+      allow = ApiToken.find_by(token: auth_header).present?
+
+      render json: { error: 'Unauthorized' }, status: :unauthorized unless allow
     end
   end
 end

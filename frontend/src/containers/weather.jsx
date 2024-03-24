@@ -7,7 +7,7 @@ function Weather() {
   const [locationInput, setLocationInput] = useState('');
   const [location, setLocation] = useState('');
 
-  const { data, isFetching, isSuccess } = useGetWeather({ location });
+  const { data, error, isFetching, isSuccess } = useGetWeather({ location });
 
   const handleInputChange = (event) => {
     setLocationInput(event.target.value);
@@ -21,7 +21,10 @@ function Weather() {
     if (isFetching) {
       return <div>Loading...</div>
     }
-    
+    if (error) {
+      console.log(data)
+      return (<div>Something wrong here</div>);
+    }
     if (isSuccess && data?.error) {
       return <div>{data.error}</div>;
     }

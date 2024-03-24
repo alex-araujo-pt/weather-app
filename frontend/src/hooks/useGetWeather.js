@@ -4,17 +4,17 @@ import axios from 'axios';
 const useGetWeather = ({ location }) => {
   const baseUrl = process.env.REACT_APP_API_BASE_URL || 'https://weather-app.alexandrearaujo.tech';
   const url = `${baseUrl}/api/v1/weathers`;
+  const token = process.env.REACT_APP_API_TOKEN || '92d17be3bc49ad18b2e0';
   
   const fetchWeatherData = async (url, location) => {
     try {
-      const response = await axios.get(`${url}?location=${location}`);
-      // console.log('response', response.data)
-      // if (response.status >= 400) { // Check for bad status
-      //   throw new Error('Bad response from server');
-      // }
+      const response = await axios.get(`${url}?location=${location}`, {
+        headers: {
+          Authorization: token,
+        },
+      });
       return response.data;
     } catch (error) {
-      console.log('handle error', error);
       throw new Error(error.response ? error.response.data : 'Network response was not ok');
     }
   };

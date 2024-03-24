@@ -20,4 +20,3 @@ networks:
   default:
     name: ${NETWORK}
 
-#  docker exec -it weather-app-web bin/rails db:migrate
