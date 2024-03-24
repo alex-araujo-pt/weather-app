@@ -1,26 +1,47 @@
-import logo from '../logo.svg';
+import React, { useState } from 'react';
 import '../App.css';
 import useGetWeather from '../hooks/useGetWeather';
+import displayWeather from './displayWeather';
 
 function Weather() {
-  const { data, error, isLoading } = useGetWeather({ location: 'Lisbon' });
-  console.log(data, error, isLoading)
+  const [locationInput, setLocationInput] = useState('');
+  const [location, setLocation] = useState('');
+
+  const { data, error, isFetching, isSuccess } = useGetWeather({ location });
+
+  const handleInputChange = (event) => {
+    setLocationInput(event.target.value);
+  };
+
+  const handleGetWeather = () => {
+    setLocation(locationInput);
+  };
+
+  const loading = () => (
+    <div>Loading...</div>
+  );
+
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Weather
+          Weather App
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React with Alex
-        </a>
       </header>
+      <div>
+        <input
+          type="text"
+          value={locationInput}
+          onChange={handleInputChange}
+          placeholder="Enter a location"
+        />
+        <button onClick={handleGetWeather}>Get</button>
+      </div>
+      <div>
+        {(isFetching) && loading()}
+        {(isSuccess && data) && displayWeather({ data })}
+      </div>
     </div>
   );
 }
