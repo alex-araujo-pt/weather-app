@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Weather from './containers/weather';
 
-const BASE_URL = 'app/';
+const BASE_URL = '/app/';
 const queryClient = new QueryClient();
 
 function App() {
@@ -12,7 +12,6 @@ function App() {
       <Router>
         <Routes>
           <Route path={BASE_URL} element={<Weather />} />
-          <Route path={`${BASE_URL}weather/`} element={<Weather />} />
         </Routes>
       </Router>
     </QueryClientProvider>
