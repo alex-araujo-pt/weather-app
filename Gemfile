@@ -18,6 +18,7 @@ gem 'rack-cors', require: 'rack/cors'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
+  gem 'rspec-rails', '~> 5.0'
 end
 
 group :development do
