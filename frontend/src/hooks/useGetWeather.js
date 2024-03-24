@@ -2,8 +2,7 @@ import { useQuery } from 'react-query';
 import axios from 'axios';
 
 const useGetWeather = ({ location }) => {
-  const baseUrl = process.env.REACT_APP_API_BASE_URL;
-  console.log(baseUrl)
+  const baseUrl = process.env.REACT_APP_API_BASE_URL || 'https://weather-app.alexandrearaujo.tech';
   const url = `${baseUrl}/api/v1/weathers`;
   
   const fetchWeatherData = async (url, location) => {
