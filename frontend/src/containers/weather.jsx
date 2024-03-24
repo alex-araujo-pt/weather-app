@@ -1,13 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from '../logo.svg';
+import '../App.css';
+import useGetWeather from '../hooks/useGetWeather';
 
-function App() {
+function Weather() {
+  const { data, error, isLoading } = useGetWeather({ location: 'Lisbon' });
+  console.log(data, error, isLoading)
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Weather
         </p>
         <a
           className="App-link"
@@ -22,4 +25,4 @@ function App() {
   );
 }
 
-export default App;
+export default Weather;
