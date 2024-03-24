@@ -5,13 +5,27 @@ const useGetWeather = ({ location }) => {
   const baseUrl = process.env.REACT_APP_API_BASE_URL || 'https://weather-app.alexandrearaujo.tech';
   const url = `${baseUrl}/api/v1/weathers`;
   
+  // const fetchWeatherData = async (url, location) => {
+  //   try {
+  //     const response = await axios.get(`${url}?location=${location}`);
+  //     return response.data;
+  //   } catch (error) {
+  //     throw new Error(error.response ? error.response.data : 'Network response was not ok');
+  //   }
+  // };
   const fetchWeatherData = async (url, location) => {
-    try {
-      const response = await axios.get(`${url}?location=${location}`);
-      return response.data;
-    } catch (error) {
-      throw new Error(error.response ? error.response.data : 'Network response was not ok');
-    }
+    const response = await fetch(`${url}?location=${location}`).
+    then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      return data;
+    })
+    .catch(error => console.error('There has been a problem with your fetch operation:', error));
+    return response
   };
   
   const queryWeather = useQuery({
