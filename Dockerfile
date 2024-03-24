@@ -2,8 +2,6 @@
 
 # Use an official Node image to install Node.js and npm
 ARG RUBY_VERSION=3.2.3
-ARG REACT_APP_API_BASE_URL
-ENV REACT_APP_API_BASE_URL=$REACT_APP_API_BASE_URL
 
 # Stage 1: Node.js and frontend build
 FROM node:20.11.1 as node_base
