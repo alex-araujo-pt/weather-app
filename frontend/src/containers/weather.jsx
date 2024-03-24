@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../App.css';
 import useGetWeather from '../hooks/useGetWeather';
-import displayWeather from './displayWeather';
+import displayWeather from '../components/displayWeather';
 
 function Weather() {
   const [locationInput, setLocationInput] = useState('');
@@ -22,7 +22,7 @@ function Weather() {
       return <div>Loading...</div>
     }
     if (error) {
-      console.log(data)
+  
       return (<div>Something wrong here</div>);
     }
     if (isSuccess && data?.error) {
