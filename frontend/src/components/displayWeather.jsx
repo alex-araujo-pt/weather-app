@@ -1,4 +1,5 @@
 import React from "react";
+import { array, number,  shape, string } from 'prop-types';
 
 const weatherEmojiMap = {
   'Sunny': '☀️',
@@ -25,5 +26,21 @@ function displayWeather({ data }) {
     </div>
   );
 }
+
+displayWeather.propTypes = {
+  data: shape({
+    current: shape({
+      temperature: number.isRequired,
+      humidity: number.isRequired,
+      wind_speed: number.isRequired,
+      wind_dir: string.isRequired,
+      weather_descriptions: array.isRequired,
+    }).isRequired,
+    location: shape({
+      name: string.isRequired,
+      country: string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default displayWeather;
