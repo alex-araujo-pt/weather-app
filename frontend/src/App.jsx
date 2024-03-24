@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Weather from './containers/weather';
 
-const BASE_URL = 'frontend/';
+const BASE_URL = 'app/';
 const queryClient = new QueryClient();
 
 function App() {

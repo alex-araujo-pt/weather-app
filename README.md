@@ -10,7 +10,7 @@ asdf nodejs
 ## Development
 ### Frontend
 - Command: `yarn start`
-- URL: http://localhost:3001/frontend
+- URL: http://localhost:3001/app
 
 ### Backend
 - Command: `rails server`

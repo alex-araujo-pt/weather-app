@@ -63,7 +63,7 @@ COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
 
 # Copy the built React app to the Rails public/frontend directory
-COPY --from=node_base /app/frontend/build /rails/public/frontend
+COPY --from=node_base /app/frontend/build /rails/public/app
 
 # Run and own only the runtime files as a non-root user for security
 RUN useradd rails --create-home --shell /bin/bash && \
