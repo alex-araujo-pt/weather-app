@@ -7,7 +7,7 @@ function Weather() {
   const [locationInput, setLocationInput] = useState('');
   const [location, setLocation] = useState('');
 
-  const { data, error, isFetching, isSuccess } = useGetWeather({ location });
+  const { data, isFetching, isSuccess } = useGetWeather({ location });
 
   const handleInputChange = (event) => {
     setLocationInput(event.target.value);
@@ -17,9 +17,21 @@ function Weather() {
     setLocation(locationInput);
   };
 
-  const loading = () => (
-    <div>Loading...</div>
-  );
+  const renderWeather = () => {
+    if (isFetching) {
+      return <div>Loading...</div>
+    }
+    
+    if (isSuccess && data?.error) {
+      return <div>{data.error}</div>;
+    }
+  
+    if (isSuccess && data?.current) {
+      return displayWeather({ data });
+    }
+  
+    return null;
+  }
 
   return (
     <div className="App">
@@ -38,8 +50,7 @@ function Weather() {
         <button onClick={handleGetWeather}>Get</button>
       </div>
       <div>
-        {(isFetching) && loading()}
-        {(isSuccess && data) && displayWeather({ data })}
+        {renderWeather()}
       </div>
     </div>
   );
