@@ -46,9 +46,6 @@ RUN bundle install && \
 # Copy application code
 COPY . .
 
-# Build React app
-RUN cd frontend && npm install && npm run build && cd ..
-
 # Precompile bootsnap and assets
 RUN bundle exec bootsnap precompile app/ lib/ && \
     SECRET_KEY_BASE=1 ./bin/rails assets:precompile
@@ -60,7 +57,7 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y curl libsqlite3-0 libvips libpq5 && \
     rm -rf /var/lib/apt/lists/*
 
-# Copy built artifacts: gems, application, and frontend build
+# Copy built artifacts: gems, application build
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
 
