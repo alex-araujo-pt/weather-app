@@ -43,7 +43,7 @@ function Weather() {
           Weather App
         </p>
       </header>
-      <div>
+      <div className="form">
         <input
           type="text"
           value={locationInput}
