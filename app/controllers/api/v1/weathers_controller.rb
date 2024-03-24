@@ -3,7 +3,7 @@ module Api::V1
     def index
       return render json: { error: 'Location is required' }, status: :bad_request if params[:location].blank?
       
-      location = params[:location]
+      location = params[:location]&.downcase
       cache_weather = Weather.find_by(location:)
 
       current_weather = if cache_weather&.updated_at&. > 30.minutes.ago
