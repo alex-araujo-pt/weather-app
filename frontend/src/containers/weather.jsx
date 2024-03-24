@@ -21,7 +21,6 @@ function Weather() {
     <div>Loading...</div>
   );
 
-
   return (
     <div className="App">
       <header className="App-header">
