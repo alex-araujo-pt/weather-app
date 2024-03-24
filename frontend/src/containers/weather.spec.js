@@ -1,5 +1,5 @@
 import { render, screen} from '@testing-library/react';
-import Weather from './weather'; // Adjust the import path as needed.
+import Weather from './weather';
 
 jest.mock('../hooks/useGetWeather', () => ({
   __esModule: true,
