@@ -18,7 +18,7 @@ module Api::V1
     private
 
     def fetch_and_update_weather_data(cache_weather, location)
-      current_weather = WeatherService.fetch_current_weather(location)
+      current_weather = WeatherService.new(location).fetch_current_weather()
       if cache_weather.present?
         cache_weather.update(weather_data: current_weather)
       else

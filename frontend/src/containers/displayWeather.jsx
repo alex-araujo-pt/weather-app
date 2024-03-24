@@ -13,7 +13,7 @@ function displayWeather({ data }) {
   const { weather_descriptions } = current;
   const weatherDescription = weather_descriptions[0];
   
-  const weatherEmoji = weatherEmojiMap[weatherDescription] || '🌈';
+  const weatherEmoji = weatherEmojiMap[weatherDescription] || '🌎';
   
   return (
     <div>

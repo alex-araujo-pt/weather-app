@@ -6,9 +6,13 @@ class WeatherService
   API_BASE_URL = ENV.fetch('WEATHER_API_BASE_URL', nil).freeze
   ACCESS_KEY = ENV.fetch('WEATHER_API_ACCESS_KEY', nil).freeze
 
-  def self.fetch_current_weather(location)
+  def initialize(location)
+    @location = location
+  end
+
+  def fetch_current_weather
     uri = URI(API_BASE_URL)
-    uri.query = URI.encode_www_form(access_key: ACCESS_KEY, query: location)
+    uri.query = URI.encode_www_form(access_key: ACCESS_KEY, query: @location)
 
     response = Net::HTTP.get_response(uri)
     
